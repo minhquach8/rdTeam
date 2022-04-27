@@ -176,8 +176,7 @@ const ReminderEditTest = (props) => {
 									color: "black",
 								},
 							}}
-							name="title
-              "
+							name="title"
 							value={values.title}
 							onChange={(e) => handleInputChange(e)}
 						/>
