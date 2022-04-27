@@ -8,6 +8,7 @@ const reminderSchema = new mongoose.Schema({
 	Email: {type: String, trim: true},
 	Content: { type: String, trim: true, required: [true, 'Please fill content']},
 	RemindAt: { type: Number },
+	IsCron: {type: Boolean, default: false},
 	IsSend: {type: Boolean, default: false}
 });
 
