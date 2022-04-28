@@ -25,9 +25,9 @@ const Financials = ({info}) => {
   return (
     <div className={classes.financials}>
     <Grid container spacing={2}
-      columnSpacing={{ xs: 1, sm: 3, md: 3 }}>
+      columnSpacing={{ xs: 4, sm: 5, md: 5 }}>
       <Grid container className={classes.grid} item xs >
-              <Grid item xs container spacing={2}>
+              <Grid item xs container spacing={3}>
                 <Grid item xs >
                   <Typography
                     gutterBottom 
@@ -106,14 +106,14 @@ const Financials = ({info}) => {
             </Grid>
           </Grid>
 
-          <Grid container spacing={2} className={classes.grid} item xs>
-              <Grid item xs container spacing={2}>
+          <Grid container className={classes.grid} item xs sm>
+              <Grid item xs container spacing={1} sm>
                 <Grid item xs >
 
                   <Typography
                     gutterBottom 
                     variant="subtitle1" 
-                    className={classes.item}
+                    className={classes.item_financial}
                     style={{fontWeight: 'bold'}}>
                       Total Assets (Billions VND):
                   </Typography>

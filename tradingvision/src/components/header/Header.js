@@ -16,7 +16,6 @@ import useStyles from "./style";
 import Navbar from './Navbar'
 import Modal from '@mui/material/Modal';
 import SearchPopup from "../search/SearchPopup";
-import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const darkTheme = createTheme({
@@ -49,41 +48,28 @@ const Header = ({user}) =>{
     const handleOpen = () => setTest(true);
     const handleClosed = () => setTest(false); 
     const logout = () => {
-        window.open("http://localhost:4040/auth/logout", "_self");
+        window.open("http://ec2-3-14-136-159.us-east-2.compute.amazonaws.com/auth/logout", "_self");
     };
-    
+    const [click, setClick] = useState(false); 
+
 return ( 
     <ThemeProvider theme={darkTheme}>
         <AppBar position="static" className={classes.appbar}>
             <CssBaseline/>
             <Container>
                 <Toolbar>
-                    {/* <img src="logo.png" alt="logo" className={classes.logo} /> */}
-                    {/* <Box
-                        component="img"
-                        sx={{
-                        height: 40,
-                        width: 150,
-                        maxHeight: { xs: 233, md: 167 },
-                        maxWidth: { xs: 350, md: 250 },
-                        }}
-                        alt="logo"
-                        src="logo.png" 
-                        onClick={() => history("/")}
-                        className={classes.logo}
-                    /> */}
-
-
 
                     <Typography 
                     onClick={() => history("/")} 
                     className={classes.title}
-                    variant="h5"> Trading Vision </Typography>
+                    > Trading Vision </Typography>
                     <div className={ user ? classes.search : classes.searchNotLogin}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
+                        
                         {user ? (
+                            <>
+                            <div className={classes.searchIcon}>
+                                <SearchIcon />
+                            </div>
                             <InputBase
                                         placeholder="Search…"
                                         classes={{
@@ -94,27 +80,11 @@ return (
                                         style={{fontFamily: "Montserrat"}}
                                         readOnly={true}
                                         />
+                            </>
                         ):(
                             <>
 
-                            <InputBase
-                                        placeholder="Search…"
-                                        classes={{
-                                            root: classes.inputRoot,
-                                            input: classes.inputInput,
-                                        }}
-                                        readOnly={true}
-                                        style={{fontFamily: "Montserrat"}}
-                                        onClick={() => {
-                                            toast.warning("Please sigin to your account !!!", 
-                                                {autoClose: 5000, 
-                                                transition: Slide,
-                                                position:"bottom-left",
-                                                });
-                                        }}
-                                        />
-                                        <ToastContainer className={classes.toast} 
-											toastStyle={{ color:"#000" }}/>
+                            
                             </>
                         )}
                         
@@ -137,7 +107,7 @@ return (
 
                     <div className={classes.navlinks}>
                        {user ?(
-                        <Navbar className={classes.link}/>
+                        <Navbar className={classes.link} click={click} setClick={setClick}/>
                        ):(
                         <></>
                        )}

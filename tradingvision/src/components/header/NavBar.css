@@ -76,6 +76,7 @@
     opacity: 1;
     transition: all 0.5s ease;
     font-size: 14px;
+    margin-top: 20px;
   }
 
   .nav-menu.active {
@@ -91,13 +92,20 @@
   }
   
   .nav-item {
-    height: 50px;
+    height: 40px;
+    border-radius: 5px;
   }
   .nav-links {
-    padding: 1.5rem;
-    width: 100%;
+    margin-top: 15px;
+    width: 151px;
     display: table;
+    background-color: rgba(64, 64, 64, 1);
+    border-radius: 5px;
   }
+  .nav-links:hover {
+    background-color: rgba(82, 82, 82, 1);
+  }
+
 
   .nav-icon {
     display: block;

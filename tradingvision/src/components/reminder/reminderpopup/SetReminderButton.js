@@ -26,7 +26,7 @@ const SetReminderButton = (props) => {
     var current = new Date();
     current.setMinutes(current.getMinutes() + 10)
 
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState(current);
     const [stockTicker,setTicker] = useState([]);
 
 
@@ -47,8 +47,7 @@ const SetReminderButton = (props) => {
     
     const validate = (fieldValues = values) => {
       let temp = { ...errors }
-      var current = new Date();
-      current.setMinutes(current.getMinutes() + 9)
+     
       if ('title' in fieldValues)
           temp.title = fieldValues.title ? "" : "This field is required."
       if ('content' in fieldValues)
@@ -76,14 +75,18 @@ const SetReminderButton = (props) => {
 
         const handleSubmit = e => {
             e.preventDefault()
-            if(date.getTime() < current.getTime()) {
+            var current_condition = new Date();
+            current_condition.setMinutes(current_condition.getMinutes() + 9)
+            if(date.getTime() < current_condition.getTime()) {
               toast.error("Reminder time must be 10 minutes after current time!", 
               {autoClose: 2000, 
               transition: Slide,
               position:"bottom-left",
+              pauseOnHover: false,
+              
               });
             }
-            if (validate() &&  (date.getTime() >= current.getTime())) {
+            else if (validate() &&  (date.getTime() >= current_condition.getTime())) {
               
               // ham insert reminder vo database
            fetch(`/api/reminders`, {
@@ -103,6 +106,7 @@ const SetReminderButton = (props) => {
             {autoClose: 5000, 
             transition: Slide,
             position:"bottom-left",
+            pauseOnHover: false,
             }) 
               resetForm();
               handleClose();
@@ -195,7 +199,7 @@ const SetReminderButton = (props) => {
                     autoComplete="off"
                     renderInput={(props) => <TextField {...props} required/>}
                     value={date}
-                    minDateTime={new Date().setMinutes(new Date().getMinutes() + 10)}
+                    minDateTime={new Date().setMinutes(new Date().getMinutes() + 9.5)}
                     onChange={(newValue) => {
                        
                           setDate(newValue);
@@ -275,7 +279,9 @@ const SetReminderButton = (props) => {
               type = "submit"
               className={classes.btn_Save}>Save</Button>
              <ToastContainer className={classes.toast} 
-											toastStyle={{ color:"#000" }}/>
+											toastStyle={{ color:"#000" }}
+                      pauseOnVisibilityChange={false}
+                      pauseOnHover={false}/>
             <Button
               onClick={handleClose}
               className={classes.btn_Cancel}>Cancel</Button>

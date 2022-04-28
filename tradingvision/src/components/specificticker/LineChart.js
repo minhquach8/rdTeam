@@ -180,6 +180,8 @@ const LineChart =(props) =>{
                     transition: Slide,
                     position:"bottom-left",
                     pauseOnHover:false,
+                    pauseOnVisibilityChange: false,
+
                     });
                   
                 }
@@ -561,7 +563,9 @@ const LineChart =(props) =>{
             </div>
         ):(
           <div className={classes.line_chart_div}>
-            <ReactHighcharts config = {configPrice}></ReactHighcharts>
+            <ReactHighcharts config = {configPrice}>
+            
+            </ReactHighcharts>
             <SetReminderLine 
                open = {open} 
                setOpen = {setOpen}

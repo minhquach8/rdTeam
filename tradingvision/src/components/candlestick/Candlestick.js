@@ -18,11 +18,11 @@ const Candlestick = () => {
   },[])
 
   const componentDidMount = async() => {
-    setLoading(true)
+   
     axios.get(`/api/stocks/query?ticker=${ticker}&limit=1`)
     .then((response) =>{
       setData(response.data.stocks)
-      setLoading(false)
+      
     })
   }
 

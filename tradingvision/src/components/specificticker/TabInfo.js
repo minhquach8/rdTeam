@@ -52,12 +52,7 @@ const TabInfo = ({info}) => {
                       variant="inset" 
                       flexItem 
                       className={classes.divider}
-                      style={{
-                            height:"50px",
-                            marginTop: "10px",
-                            marginLeft: "-25px",
-                            backgroundColor: "rgba(255, 165, 0, 0.5)"
-                            }}
+                    
                       />
                     <Tab 
                       label="Financials" 

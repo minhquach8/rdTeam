@@ -3,16 +3,16 @@ import {NavLink} from 'react-router-dom'
 import "./NavBar.css";
 
 
-const Navbar = () => {
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+const Navbar = (props) => {
+  
+  const handleClick = () => props.setClick(!props.click);
 
 
   return (
       <>
       <nav className="navbar">
       <div className="nav-container">
-    <ul className={click ? "nav-menu active" : "nav-menu"}>
+    <ul className={props.click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <NavLink
                 exact
@@ -48,7 +48,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="nav-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+            <i className={props.click ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
           </div>
           </nav>

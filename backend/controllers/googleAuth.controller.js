@@ -1,7 +1,7 @@
 const passport = require("passport");
 const { UnauthenticatedError } = require("../errors");
 const CustomAPIError = require("../errors/custom-error");
-const CLIENT_URL = "http://localhost:3000/"
+const CLIENT_URL = "http://ec2-3-14-136-159.us-east-2.compute.amazonaws.com/"
 
 exports.login = (req, res) => {
 	res.redirect(CLIENT_URL+'homepage');

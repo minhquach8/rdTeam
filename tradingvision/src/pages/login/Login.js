@@ -8,10 +8,10 @@ const Login = () => {
   const classes = useStyles()
   
   const google = () => {
-    window.open("http://localhost:4040/auth/google", "_self");
+    window.open("http://ec2-3-14-136-159.us-east-2.compute.amazonaws.com/auth/google", "_self");
   };
   const facebook = () => {
-    window.open("http://localhost:4040/auth/facebook", "_self");
+    window.open("http://ec2-3-14-136-159.us-east-2.compute.amazonaws.com/auth/facebook", "_self");
   };
 
   return (

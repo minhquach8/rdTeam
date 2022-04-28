@@ -80,11 +80,28 @@ const SetReminderLine = (props) => {
           var current = new Date();
           current.setMinutes(current.getMinutes() + 9)
 
-          if (values.content === "" || values.title === ""){
-            toast.error("All fields are required!", 
+          if (values.content === "" && values.title === ""){
+            toast.error("Title and content field is required!", 
                   {autoClose: 2000, 
                   transition: Slide,
                   position:"bottom-left",
+                  pauseOnHover: false,
+                  });
+          }
+          else if ( values.title === ""){
+            toast.error("Title field is required!", 
+                  {autoClose: 2000, 
+                  transition: Slide,
+                  position:"bottom-left",
+                  pauseOnHover: false,
+                  });
+          }
+          else if ( values.content === ""){
+            toast.error("Content field is required!", 
+                  {autoClose: 2000, 
+                  transition: Slide,
+                  position:"bottom-left",
+                  pauseOnHover: false,
                   });
           }
           else if(time.getTime() < current.getTime()) {
@@ -92,6 +109,7 @@ const SetReminderLine = (props) => {
             {autoClose: 2000, 
             transition: Slide,
             position:"bottom-left",
+            pauseOnHover: false,
             });
           }
 
@@ -99,19 +117,7 @@ const SetReminderLine = (props) => {
           
           else {
     
-            // axios.patch(`/api/reminders/${props.id}`, {
-            //   Content: values.content,
-            //   Title: values.title,
-            //   Ticker: stockTicker,
-            //   RemindAt: date.getTime(),
-            // })
-            // .catch((error)=>{
-            //  console.log(error);
-            // })
-            
-            // props.showToast();
-            // resetForm();
-            // handleClose();
+           
             fetch(`/api/reminders`, {
               method: "POST",
               body: JSON.stringify({
@@ -307,7 +313,8 @@ const SetReminderLine = (props) => {
               type = "submit"
               className={classes.btn_Save}>Save</Button>
              <ToastContainer className={classes.toast} 
-											toastStyle={{ color:"#000" }}/>
+											toastStyle={{ color:"#000" }}
+                      pauseOnVisibilityChange={false}/>
             <Button
               onClick={handleClose}
               className={classes.btn_Cancel}>Cancel</Button>

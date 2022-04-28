@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import useStyles from "./style";
 import {
 	Container,
@@ -54,11 +54,15 @@ import PageNotFound from "../error/PageNotFound";
 		const [isFavorite, setIsFavorite] = useState(null);
 		
 		const [chart,setChart] = useState("Line")
-
+		const [loading, setLoading] = useState(true)
 		// get company info
 		useEffect(() => {
 			getCompanyInfo();
 			getFavorite();
+			setTimeout(() => {
+				setLoading(false)
+			  }, 3200);
+			 
 		}, []);
 
 		const getCompanyInfo = async () => {
@@ -77,7 +81,7 @@ import PageNotFound from "../error/PageNotFound";
 		
 		const checkid = obj => obj.CompanyId === CompanyId[0] ;
 		const checkTicker = obj => obj.Ticker === company.Ticker;
-		// console.log(company.some(checkTicker))
+
 		const getFavorite = async() =>{
 		axios.get(`/api/favorites`)
 		  .then((response) =>{
@@ -145,8 +149,13 @@ import PageNotFound from "../error/PageNotFound";
 		// }
 
 		return (
-			
 			<>
+				{loading === true ? (
+					<Container>
+						<CircularProgress style={{ backgroundColor: "primary" }} className={classes.loading_spinner}/>
+					</Container>
+				):(
+					<>
 			{
 				company.length !== 0 ? (
 					<>
@@ -159,24 +168,21 @@ import PageNotFound from "../error/PageNotFound";
 								
 								<Grid container>
 									<Grid item xs={1}>
-										<Typography variant="h6" className={classes.field}>
+										<Typography 
+										variant="h6" 
+										className={classes.field} 
+										>
 											{info.StockExchange.toUpperCase()}
 										</Typography>
 									</Grid>
 									<Divider 
 										orientation="vertical" 
-										flexItem 
+										// flexItem 
 										light={true}
-										className={classes.divider}
-										style={{
-												height:"30px",
-												width: "3px",
-												marginLeft: "-1%",
-												marginRight: "2%",
-												backgroundColor: "#FF9936"
-												}}
+										className={classes.divider}									
+										
 										/>
-									<Grid item xs={10}>
+									<Grid item>
 									<Typography variant="h6" className={classes.field}>
 												{info.Industry}
 											</Typography>
@@ -299,9 +305,10 @@ import PageNotFound from "../error/PageNotFound";
 					<PageNotFound/>					
 				)
 			}
-				
-
 			</>
+				)}
+			</>
+			
 			
 		);
 }

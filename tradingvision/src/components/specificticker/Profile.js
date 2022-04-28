@@ -44,6 +44,7 @@ const Profile = ({info}) => {
             className={classes.item}
             style={{fontWeight: 'bold'}}>
               Address:
+              
           </Typography>
           <Typography 
             gutterBottom 

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     tab:{
         marginTop: 15,
         fontFamily: "Montserrat",
-        marginLeft: -20,
+        // marginLeft: -20,
         fontSize: 15,
         [theme.breakpoints.down('sm')]: {
             fontSize: 13,
@@ -19,8 +19,10 @@ const useStyles = makeStyles((theme) => ({
     divider:{
         height:"50px",
         marginTop: "10px",
-        marginLeft: "-25px",
-        backgroundColor: "rgba(255, 165, 0, 0.5)"
+        marginLeft: "2%",
+        marginRight: "2%",
+        backgroundColor: "rgba(255, 165, 0, 0.5)",
+        
     },
     // Profile's styles
     grid:{
@@ -40,26 +42,29 @@ const useStyles = makeStyles((theme) => ({
     item: {
         fontFamily: "Montserrat",
         fontSize: "15px",
+        marginTop: '20px',
         [theme.breakpoints.down('sm')]: {
             fontSize: 13,
-            marginTop:"10px",
+            marginTop:"10%",
           },
-        [theme.breakpoints.down('xs')]: {
-            fontSize: 10,
-            marginTop:"15px",
-            },
+        // [theme.breakpoints.down('xs')]: {
+        //     fontSize: 10,
+        //     marginTop:"15px",
+        //     },
     },
     value:{
         fontFamily: "Montserrat",
         fontSize: "15px",
+        marginTop: '20px',
         [theme.breakpoints.down('sm')]: {
-            fontSize: 13,
-            marginTop:"10px",
+            fontSize: 11,
+            marginTop:"10%",
+            marginLeft:"15%",
           },
         [theme.breakpoints.down('xs')]: {
             fontSize: 10,
-            marginTop:"12px",
-            marginLeft:"14%",
+            marginTop:"9%",
+            marginLeft:"23%",
             },
     },
     grid_info:{
@@ -73,9 +78,13 @@ const useStyles = makeStyles((theme) => ({
     item_financial: {
         fontFamily: "Montserrat",
         fontSize: "15px",
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             fontSize: 12,
             marginTop:"10%",
+          },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 10,
+            marginTop:"12%",
           },
         [theme.breakpoints.down('xs')]: {
             fontSize: 10,
@@ -85,13 +94,19 @@ const useStyles = makeStyles((theme) => ({
     value_financial:{
         fontFamily: "Montserrat",
         fontSize: "15px",
-        [theme.breakpoints.down('sm')]: {
-            fontSize: 13,
+        [theme.breakpoints.down('md')]: {
+            fontSize: 12,
             marginTop:"10%",
+          },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 10,
+            marginTop:"12%",
+            marginBottom: "5%"
           },
         [theme.breakpoints.down('xs')]: {
             fontSize: 10,
-            paddingTop:"10%",
+            marginTop:"14.5%",
+            marginLeft: "50%"
             },
     },
     financial:{
